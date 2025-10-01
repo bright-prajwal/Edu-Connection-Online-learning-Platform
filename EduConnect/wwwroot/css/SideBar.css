@@ -1,0 +1,53 @@
+﻿#A {
+    width: 100%;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#Heder1 {
+    color: #4A5568;
+}
+    #Heder1:hover {
+        transform: scale(1.1);
+        transition: all 0.5s linear;
+        color: #8E24AA;
+    }
+
+#Heder2 {
+    padding-left:10px;
+    color: #4A5568;
+    display: block;
+}
+    #Heder2:hover {
+        transform: scale(1.2) ;
+        transform:rotateY('angle');
+
+        transition: all 0.5s linear;
+        color: #8E24AA;
+    }
+
+#button_Login1 {
+/*    background-color: #8B5CF6;*/
+}
+    #button_Login1:hover {
+        transform: scale(1.1);
+        background-color: #6B21A8;
+        transition: all 0.5s linear;
+    }
+#sidebar {
+    
+   
+}
+#BBB {
+    transition: all 0.5s linear;
+}
+

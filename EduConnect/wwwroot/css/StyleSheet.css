@@ -1,0 +1,93 @@
+﻿.card {
+    width: 300px;
+    /*    height:auto;*/
+    /*    border: 2px solid black;*/
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    /*    box-shadow: 0 2px 5px black;*/
+    /*    transition: 1s;*/
+}
+
+    .card:hover {
+        border: 3px solid skyblue;
+        /*        box-shadow: 0 6px 10px skyblue;*/
+/*        transition: 0.1s;*/
+        /*        transition-duration:0.5s;*/
+        transition: all 0.5s linear;
+        transform:scale(1.1);
+        
+    }
+
+img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+#Portfolio {
+    /*    height:300px;*/
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 60px;
+}
+
+@media (min-width: 20px) and (max-width: 833px) {
+    #Portfolio {
+        flex-wrap: wrap;
+    }
+}
+
+#Courses {
+    color: #6600cc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 25px;
+}
+
+
+.heading1 {
+    padding: 20px;
+    color: blue;
+    font-size: 1.2rem;
+}
+
+#NPTEL {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+}
+
+#Honn {
+    display: inline-grid;
+}
+
+#sidebar:hover {
+    color: aqua;
+    
+}
+
+#button_get:hover {
+    transition: 0.6s;
+}
+
+#menu-btn{
+    transition:2s;
+}
+
+.container3 {
+    position: relative;
+    top:13px;
+    left: 5%;
+    display: inline-block;
+    font-size: 1.1rem;
+    
+}
+
+#PP {
+    display: inline;
+    position: absolute;
+    right: 8%;
+    font-size: 1.2rem;
+}

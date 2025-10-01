@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EduConnect.Models.CourseModel>
+
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        a{
+            text-decoration:none;
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        
+        <h3>All Courses </h3>
+        <div id="Portfolio">
+        <div class="row">
+            @foreach (var course in Model)
+            {
+                    <div class="col-md-3 ">
+                         <div class="card ">
+                             <h3 class="heading1">@course.CoursesName</h3>
+                             <h6>Categories:- @course.Categories</h6>
+                             <div id="NPTEL">
+                                    <img alt="NPTEL" src="https://storage.googleapis.com/swayam2_central/assets/img/swayam_images/NC_logo/NPTEL_logo_128.png" />
+                                    <a href="#">EduCon</a>
+                            </div><br>
+
+                        <div style="display:inline-block" class="mb-4">
+                            <div class="btn-group">
+                                    <a href="/CoursesController1/En_rollCourses_or_ViewCourse/@course.Id" class="btn btn-sm btn-outline-primary">View Course</a>
+                            </div>
+                        </div>
+                        <small class="text-muted">@course.Instructor</small>
+                    </div>
+                </div>
+              
+            }
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+
+
+
+
+

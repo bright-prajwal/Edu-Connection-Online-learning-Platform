@@ -1,0 +1,651 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Users> signInManager;
+@inject UserManager<Users> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EudConnecation</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* css file *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" /> *@
+    @* css file *@
+    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/SideBar.css" asp-append-version="true" /> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+    </style>
+    <title>Document</title>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md text-purple-400">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                 @* Add logo or branding here *@
+                <img alt="CLA logo" class="h-10" height="50" src="https://miro.medium.com/v2/resize:fit:986/1*MhnadnmLA1m3bey7SyZbEA.png" width="100" />
+            </div>
+
+            <nav class="hidden md:flex space-x-8">
+                <a id="Heder1" href="@Url.Action("Home", "Edu")">Home</a>
+
+                <a id="Heder1" href="@Url.Action("Home", "Edu")#specificTag">About</a>
+
+                <a id="Heder1" href="@Url.Action("ViewAllCourses", "CoursesController1")">Courses</a>
+                @* <a id="Heder1"  href="@Url.Action("Gallery", "Edu")">Gallery</a> *@
+                <a id="Heder1"  href="@Url.Action("News_Events", "Edu")">News/Events</a>
+                <a id="Heder1"  href="@Url.Action("Contact_Us", "Edu")">Contact Us</a>
+            </nav>
+            @if (signInManager.IsSignedIn(User))
+            {
+
+                <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Views/Home/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                
+                <a id="button_Login1" class="hidden md:inline-block bg-purple-600 text-white px-4 py-2 rounded-full " href="@Url.Action("Logout", "Edu")">Log out</a>
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            }
+            else
+            {
+                <a id="button_Login1" class="hidden md:inline-block bg-purple-600 text-white px-4 py-2 rounded-full " href="@Url.Action("Login", "Edu")">Login</a>
+                <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+
+                </button>
+            }
+        </div>
+
+    </header>
+    <div id="BBB">
+        <div id="sidebar" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50  transition: all 0.5s linear; hidden">
+        <div class="absolute top-0 left-0 w-64 bg-white h-full shadow-md p-4">
+            <button id="close-btn" class="text-gray-700 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="mt-4 space-y-4">
+                <a id="Heder2"  " href="@Url.Action("Home", "Edu")">Home</a>
+                <a id="Heder2" " href="@Url.Action("About", "Edu")">About</a>
+                <a id="Heder2"  href="@Url.Action("Courses", "Edu")">Courses</a>
+                @* <a id="Heder2" class="block text-gray-700 hover:text-purple-600" href="@Url.Action("Gallery", "Edu")">Gallery</a> *@
+                <a id="Heder2" class="block text-gray-700 hover:text-purple-600" href="@Url.Action("Events", "Edu")">News/Events</a>
+                <a id="Heder2" class="block text-gray-700 hover:text-purple-600" href="@Url.Action("Contact_Us", "Edu")">ContactUs</a>
+                <a id="Heder2" class="block bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700" href="@Url.Action("Login", "Edu")">Login</a>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <div id="Home_bars">
+        <main class="text-white">
+            <div class="container mx-auto  flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <p class="text-4xl md:text-2xl text-green-400 mb-2">We are Learner </p>
+                    <h1 id="Course_Bio" class="text-4xl md:text-5xl font-bold mb-4" style="color:rgba(0, 0, 0, 0.881);">Learn a new skill from online courses by EduConnect</h1>
+                    <p class="text-gray-400 mb-6">Join thousands of learners and start your journey with our diverse range of courses.</p>
+                    <div class="flex space-x-4">
+                        <a class="bg-white text-gray-900 px-6 py-3 rounded-full hover:bg-gray-200 hover:text-purple-600" href="@Url.Action("Courses", "Edu")">View Courses</a>
+                        <a id="button_get" class="text-green-400 px-6 py-3 rounded-full border border-green-400 hover:bg-green-400 hover:text-white" href="@Url.Action("Signup", "Edu")">Get Started Free</a>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 mt-10 md:mt-0 relative">
+                    <img alt="Group of people studying" class="rounded-full border-8 border-green-400" height="250" src="https://storage.googleapis.com/a1aa/image/1zbNPf3JgatSrXmyzn9A9QtGnJhoUPUtgMihOgmqpfk.jpg" width="400" />
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="A">
+        <div>
+            <h1 id="Courses" class="text-4xl md:text-2xl font-bold mb-4">Featured Courses</h1>
+        </div>
+        <div id="Portfolio">
+            <div class="card">
+
+                <img alt="ADS" src="https://images.interestingengineering.com/2022/10/22/image/jpeg/6xEW9cYdppDFnQz2NfaH1V9wgf8oBLyE2kfvcMeJ.jpg" />
+
+                <h3 class="heading1">Advanced Computer Architecture</h3>
+
+                <div id="NPTEL">
+                    <img alt="NPTEL" src="https://storage.googleapis.com/swayam2_central/assets/img/swayam_images/NC_logo/NPTEL_logo_128.png" />
+                    <a href="#">EduCon</a>
+                </div>
+
+                <div style="display:inline-block" class="mb-4">
+                    @* <button class=" bg-blue-500 text-white px-4 py-2 rounded hover:bg-purple-600 d-xxl-inline-grid" type="submit"><span class="font-bold"></span></button> *@
+                </div>
+
+            </div>
+            <div class="card">
+                <img alt="#" src="https://i.ytimg.com/vi/BxuvijJRNX4/maxresdefault.jpg" />
+                <h3 class="heading1">Blockchain and its Applications</h3>
+
+                <div id="NPTEL">
+                    <img alt="NPTEL" src="https://storage.googleapis.com/swayam2_central/assets/img/swayam_images/NC_logo/NPTEL_logo_128.png" />
+                    <a href="#">EduCon</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://storage.googleapis.com/swayam2-node/Jan2024_coursecard_images/noc24-cs65.jpg" alt="" />
+                <h3 class="heading1">Business Intelligence & Analytics</h3>
+
+                <div id="NPTEL">
+                    <img alt="NPTEL" src="https://storage.googleapis.com/swayam2_central/assets/img/swayam_images/NC_logo/NPTEL_logo_128.png" />
+
+                    <a href="#">EduCon</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://storage.googleapis.com/swayam2-node/Jan2025_coursecard_images/noc25-cs22.jpg" alt="" />
+                <h3 class="heading1">Deep Learning for Natural Language Processing</h3>
+
+                <div id="NPTEL">
+                    <img alt="NPTEL" src="https://storage.googleapis.com/swayam2_central/assets/img/swayam_images/NC_logo/NPTEL_logo_128.png" />
+                    <a href="#">EduCon</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="specificTag">
+    <div class="bg-white text-gray-800">
+        <footer class="bg-gray-100 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            Learn Key Technologies
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Python
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    SQL
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Microsoft Excel
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Power BI
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Tableau
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    R Programming
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Git
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Docker
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    AWS
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    TensorFlow
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            Essential Skills
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Data Analytics
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Artificial Intelligence
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Cybersecurity
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Digital Marketing
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Machine Learning
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Statistical Analysis
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Database Management
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Web Development
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Financial Modeling
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Business Analysis
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            Industry Solutions
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Healthcare Analytics
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Sales
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Digital Transformation
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Supply Chain
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Marketing Analytics
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    HR Analytics
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Social Media Marketing
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Risk Management
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Sustainability
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    E-commerce
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            Career Paths
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Data Scientist
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Data Analyst
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Machine Learning Engineer
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Full Stack Developer
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Project Manager
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Product Manager
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Data Engineer
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Digital Marketing Specialist
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Cybersecurity Analyst
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Career Aptitude Test
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            EduConnect
+
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    About
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    What We Offer
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Leadership
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Careers
+                                </span>
+                            </li>
+                           
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Professional Certificates
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    MasterTrack® Certificates
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Degrees
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    For Enterprise
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    For Government
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    For Campus
+                                </span>
+                            </li>
+                            
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Social Impact
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Free Courses
+                                </span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            Community
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Learners
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Partners
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Beta Testers
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Blog
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    The Coursera Podcast
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Tech Blog
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Teaching Center
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">
+                            More
+                        </h3>
+                        <ul>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Press
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Investors
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Terms
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Privacy
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Help
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Accessibility
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Contact
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Articles
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Directory
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Affiliates
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Modern Slavery Statement
+                                </span>
+                            </li>
+                            <li class="mb-2">
+                                <span class="hover:underline" href="#">
+                                    Manage Cookie Preferences
+                                </span>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+          </div>
+
+    </div>
+
+    
+
+    
+
+
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('close-btn');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.remove('hidden');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+        });
+    </script>
+
+    <footer class="border-top footer text-muted">
+        <div class="container3">
+            &copy; 2025 - EduConnect - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div id="PP" class="flex space-x-4 mt-4 sm:mt-0">
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-facebook-f">
+                </i>
+            </span>
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-linkedin-in">
+                </i>
+            </span>
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-twitter">
+                </i>
+            </span>
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-instagram">
+                </i>
+            </span>
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-youtube">
+                </i>
+            </span>
+            <span class="text-gray-500 hover:text-gray-900" href="#">
+                <i class="fab fa-tiktok">
+                </i>
+            </span>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+   
+
+</body>
+</html>
+

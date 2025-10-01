@@ -1,0 +1,389 @@
+﻿
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Course Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const subCategories = {
+                "Computer Science and Engineering": [
+                    "Data Science",
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Cyber Security",
+                    "Software Engineering"
+                ],
+                "Electrical Engineering": [
+                    "Power Systems",
+                    "Control Systems",
+                    "Signal Processing"
+                ],
+                "Mechanical Engineering": [
+                    "Thermodynamics",
+                    "Fluid Mechanics",
+                    "Manufacturing"
+                ]
+            };
+
+            const categorySelect = document.getElementById('category-select');
+            const subCategoryContainer = document.getElementById('sub-category-container');
+
+            categorySelect.addEventListener('change', function () {
+                const selectedCategory = categorySelect.value;
+                const subCategoryList = subCategories[selectedCategory] || [];
+                subCategoryContainer.innerHTML = '';
+
+                subCategoryList.forEach(subCategory => {
+                    const label = document.createElement('label');
+                    label.className = 'flex items-center mb-2';
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'mr-2';
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(subCategory));
+                    subCategoryContainer.appendChild(label);
+                });
+            });
+
+            // Trigger change event to populate sub-categories on page load
+            categorySelect.dispatchEvent(new Event('change'));
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-900 p-4">
+        <h1 class="text-white text-2xl">Course Catalog</h1>
+    </header>
+    <div class="container mx-auto p-4">
+        <div class="flex flex-col md:flex-row">
+            <aside class="w-full md:w-1/4 p-4">
+                <div class="mb-4">
+                    <input class="w-full p-2 border rounded" placeholder="Search" type="text" />
+                </div>
+                <div class="mb-4">
+                    <h2 class="font-bold mb-2">FILTERS</h2>
+                    <div class="mb-2">
+                        <label class="block font-semibold">National Coordinator</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>NPTEL</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block font-semibold">Course Mode</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>All</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block font-semibold">Course Duration</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>All</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block font-semibold">Course Exam Date</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>All</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block font-semibold">Course Credits</label>
+                        <select class="w-full p-2 border rounded">
+                            <option>All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h2 class="font-bold mb-2">CATEGORY</h2>
+                    <select id="category-select" class="w-full p-2 border rounded">
+                        <option>Computer Science and Engineering</option>
+                        <option>Electrical Engineering</option>
+                        <option>Mechanical Engineering</option>
+                    </select>
+                </div>
+                <div>
+                    <h2 class="font-bold mb-2">SUB-CATEGORIES</h2>
+                    <div id="sub-category-container"></div>
+                </div>
+            </aside>
+            <main class="w-full md:w-3/4 p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <button class="px-4 py-2 bg-gray-200 rounded-tl rounded-bl">Upcoming (Enrollment Open)</button>
+                        <button class="px-4 py-2 bg-gray-200 rounded-tr rounded-br">Ongoing (Enrollment Closed)</button>
+                    </div>
+                    <div>
+                        <label class="mr-2">Sorted by:</label>
+                        <select class="p-2 border rounded">
+                            <option>Course Title</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="Advanced Computer Architecture" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">Advanced Computer Architecture</h3>
+                        <p class="mb-2">Prof. Smruti Ranjan Sarangi</p>
+                        <p class="mb-2">IIT Delhi</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>12 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 26 Apr, 2025</p>
+                        <p>Exam Registration Ends: 28 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="Advanced Computer Networks" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">Advanced Computer Networks</h3>
+                        <p class="mb-2">Prof. Neminath Hubballi, Prof. Sameer G Kulkarni</p>
+                        <p class="mb-2">IIT Indore, IIT Gandhi nagar</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>12 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 27 Apr, 2025</p>
+                        <p>Exam Registration Ends: 28 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="Advanced Graph Theory" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">Advanced Graph Theory</h3>
+                        <p class="mb-2">Prof. Rajiv Misra</p>
+                        <p class="mb-2">IIT Patna</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="Affective Computing" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">Affective Computing</h3>
+                        <p class="mb-2">Prof. Jainendra Shukla, Prof. Abhinav Dhall</p>
+                        <p class="mb-2">IIT Delhi, IIT Ropar</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="Algorithms in Computational Biology and..." class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">Algorithms in Computational Biology and...</h3>
+                        <p class="mb-2">Prof. Chirag Jain</p>
+                        <p class="mb-2">IISc Bangalore</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                     <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                     <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                     <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div> <div class="bg-white p-4 rounded shadow">
+                        <img alt="AI:Constraint Satisfaction" class="w-full h-32 object-cover rounded mb-4" height="150" src="https://placehold.co/300x150" width="300" />
+                        <h3 class="text-blue-600 font-bold mb-2">AI:Constraint Satisfaction</h3>
+                        <p class="mb-2">Prof. Deepak Khemani</p>
+                        <p class="mb-2">IIT Madras</p>
+                        <div class="flex items-center mb-2">
+                            <img alt="NPTEL logo" class="w-5 h-5 mr-2" height="20" src="https://placehold.co/20x20" width="20" />
+                            <span>NPTEL</span>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>8 Weeks (Starts: 20-01-2025)</span>
+                        </div>
+                        <p class="mb-2">Enrollment Ends: 3 Feb, 2025</p>
+                        <p class="mb-2">Exam Date: 22 Mar, 2025</p>
+                        <p>Exam Registration Ends: 14 Feb, 2025</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
