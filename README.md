@@ -1,4 +1,4 @@
-# End Connect Web Application  🚀
+# Edu Connection Web Application  🚀
 
 
 
